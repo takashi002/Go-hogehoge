@@ -1,4 +1,4 @@
-module github.com/cursor/nami
+module github.com/takashi002/Go-nami
 
 go 1.22.2
 

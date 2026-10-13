@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/cursor/nami/internal/server"
-	"github.com/cursor/nami/internal/store"
+	"github.com/takashi002/Go-nami/internal/server"
+	"github.com/takashi002/Go-nami/internal/store"
 )
 
 func main() {
