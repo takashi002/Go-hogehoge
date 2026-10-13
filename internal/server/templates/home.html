@@ -1,0 +1,38 @@
+{{define "home"}}<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="page-home">
+  <div class="ocean" aria-hidden="true">
+    <div class="ocean__glow"></div>
+    <svg class="ocean__waves" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path class="wave wave--a" d="M0,224 C240,288 480,160 720,208 C960,256 1200,288 1440,224 L1440,320 L0,320 Z"></path>
+      <path class="wave wave--b" d="M0,256 C180,200 420,300 720,240 C1020,180 1260,260 1440,220 L1440,320 L0,320 Z"></path>
+      <path class="wave wave--c" d="M0,280 C300,240 540,300 780,270 C1020,240 1260,290 1440,260 L1440,320 L0,320 Z"></path>
+    </svg>
+  </div>
+
+  <header class="topbar">
+    <a class="brand brand--nav" href="/">Nami</a>
+    <a class="nav-link" href="/journal">手帖をひらく</a>
+  </header>
+
+  <main class="hero">
+    <p class="brand brand--hero reveal" style="--d:0s">Nami</p>
+    <h1 class="hero__title reveal" style="--d:0.12s">心に寄せる、短い波を残す。</h1>
+    <p class="hero__lead reveal" style="--d:0.24s">気分の潮汐と、ひとこと。ブラウザだけで動く、小さな手帖です。</p>
+    <div class="hero__cta reveal" style="--d:0.36s">
+      <a class="btn btn--primary" href="/journal">いまの波を書く</a>
+    </div>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>{{end}}
