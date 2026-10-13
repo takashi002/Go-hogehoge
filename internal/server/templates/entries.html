@@ -1,0 +1,26 @@
+{{define "entries"}}
+{{if .Entries}}
+<ul class="entry-list">
+  {{range .Entries}}
+  <li class="entry entry--{{.Mood}}">
+    <div class="entry__meta">
+      <span class="entry__mood">{{moodLabel .Mood}}</span>
+      <time datetime="{{.CreatedAt.Format "2006-01-02T15:04:05Z07:00"}}">{{formatTime .CreatedAt}}</time>
+    </div>
+    <p class="entry__body">{{.Body}}</p>
+    <form
+      class="entry__actions"
+      hx-post="/entries/{{.ID}}/delete"
+      hx-target="#entries"
+      hx-swap="innerHTML"
+      hx-confirm="この波を消しますか？"
+    >
+      <button type="submit" class="btn btn--ghost">消す</button>
+    </form>
+  </li>
+  {{end}}
+</ul>
+{{else}}
+<p class="empty">まだ波がありません。最初のひとことを書いてみましょう。</p>
+{{end}}
+{{end}}

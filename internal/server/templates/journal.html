@@ -1,0 +1,70 @@
+{{define "journal"}}<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://unpkg.com/htmx.org@2.0.4" crossorigin="anonymous"></script>
+</head>
+<body class="page-journal">
+  <div class="ocean ocean--soft" aria-hidden="true">
+    <div class="ocean__glow"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand brand--nav" href="/">Nami</a>
+    <a class="nav-link" href="/">ホーム</a>
+  </header>
+
+  <main class="journal">
+    <section class="compose reveal" style="--d:0s">
+      <h1 class="section-title">今日の波</h1>
+      <p class="section-lead">500文字までの、短い記録。気分だけでも残せます。</p>
+
+      <form
+        class="compose-form"
+        hx-post="/entries"
+        hx-target="#entries"
+        hx-swap="innerHTML"
+        hx-on::after-request="if(event.detail.successful) this.reset()"
+      >
+        <label class="field">
+          <span class="field__label">ひとこと</span>
+          <textarea name="body" rows="4" maxlength="500" required placeholder="いまの気配を、そのまま。"></textarea>
+        </label>
+
+        <fieldset class="moods">
+          <legend class="field__label">潮の状態</legend>
+          <label class="mood">
+            <input type="radio" name="mood" value="calm" checked>
+            <span>凪</span>
+          </label>
+          <label class="mood">
+            <input type="radio" name="mood" value="stirred">
+            <span>寄せ</span>
+          </label>
+          <label class="mood">
+            <input type="radio" name="mood" value="storm">
+            <span>嵐</span>
+          </label>
+        </fieldset>
+
+        <button class="btn btn--primary" type="submit">波にのせる</button>
+      </form>
+    </section>
+
+    <section class="timeline reveal" style="--d:0.15s">
+      <h2 class="section-title section-title--sm">これまでの波</h2>
+      <div id="entries">
+        {{template "entries" .}}
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>{{end}}
