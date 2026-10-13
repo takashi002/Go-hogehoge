@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cursor/nami/internal/store"
+	"github.com/takashi002/Go-nami/internal/store"
 )
 
 //go:embed templates/*.html
